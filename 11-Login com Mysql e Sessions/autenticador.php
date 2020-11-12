@@ -3,24 +3,26 @@
 session_start();
 
 try {
-    
-    $usuario_certo = "teste";
-    $senha_certa = "123";
 
-    $usuario_digitado = $_POST["user"];
-    $senha_digitada = $_POST["pass"];
+    include 'DAO/MySQL.php';
 
-    if($usuario_digitado === $usuario_certo)
+    $mysql = new MySQL();
+
+    $sql = "SELECT id, nome FROM usuarios WHERE usuario = ? AND senha = ?";
+
+    $stmt = $mysql->prepare($sql);
+
+    $stmt->bindValue(1, $_POST["user"]);
+    $stmt->bindValue(2, sha1($_POST["pass"]));
+
+    $stmt->execute();
+
+    $dados_de_usuario = $stmt->fetchObject();
+
+    if($dados_de_usuario)
     {
-        if($senha_digitada === $senha_certa)
-        {
-
-            $_SESSION["usuario_logado"] = $usuario_digitado;
-            header("Location: index.php");
-
-        }else{
-            header("Location: login.php?falhou=true");
-        }
+        $_SESSION["usuario_logado"] = $dados_de_usuario->id;
+        header("Location: index.php");
     }else{
         header("Location: login.php?falhou=true");
     }
