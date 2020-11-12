@@ -1,0 +1,2 @@
+-Acessar o terminal;
+-Utilizar o comando php -S localhost:8000 (Ou outra porta não utilizada pelo sistema);
