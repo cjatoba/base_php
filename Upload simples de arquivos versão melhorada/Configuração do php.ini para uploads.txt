@@ -1,0 +1,8 @@
+-Abrir o php.ini e verificar se as linhas abaixo estão descomentadas:
+    file_uploads = On
+-Ainda no arquivo php.ini verificar as configurações abaixo:
+    upload_max_filesize = 10M //Este parâmetro especifica o tamanho máximo do arquivo no upload_max_filesize
+    max_file_uploads = 20 //Especifica a quantidade máxima de uploads de arquivos simultâneos
+    post_max_size = 10M //Especifica o tamanho máximo da requisição POST (deve ter o mesmo valor do parâmetro upload_max_filesize)
+    memory_limit = 128M //Especifica o limite de memória que cada script php pode usar (Se estiver em produção quando demandar muitas requisições deixar este valor em pelo menos 1G)
+-Parar o servidor caso esteja ativo e iniciar novamente com o comando php -S localhost:8000 (Ou outra porta que desejar)
