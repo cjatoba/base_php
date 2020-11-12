@@ -31,6 +31,12 @@ try {
 }
 ?>
 
-<h1>Bem vindo <strong> <?= $dados_de_usuario->nome ?> </strong></h1>
+<h1>Bem vindo <strong> <?= $dados_de_usuario->nome ?> você está na área restrita </strong></h1>
 
 <a href="index.php?sair=true">Sair</a>
+
+<br>
+
+<a href="cadastrar_categoria.php">Cadastrar Categoria</a>
+
+<a href="listar_categorias.php">Listar Categoria</a>
