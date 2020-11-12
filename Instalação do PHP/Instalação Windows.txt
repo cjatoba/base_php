@@ -1,0 +1,4 @@
+-Fazer o download do zip da versão Thread Safe no link https://windows.php.net/download/ ;
+-Descompactar o arquivo zip;
+-Na pasta descompactada renomear o arquivo php.ini-development para php.ini (Em produção renomear o arquivo php.ini-production);
+-Adicionar o caminho (Ex. C:\php\php-7.4.12-Win32-vc15-x64) no Path das Variáveis de ambiente, e testar utilizando o comando php -v no terminal (Talvez seja necessário reiniciar a máquina);
