@@ -1,0 +1,4 @@
+Data Access Object - DAO
+- Todos os arquivos que "conversam" com o SGBD (Mysql)
+
+CRUD (Create, Read, Update, Delete)
