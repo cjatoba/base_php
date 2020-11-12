@@ -20,6 +20,7 @@ try{
 <table>
     <thead>
         <tr>
+            <th>Ações</th>
             <th>ID</th>
             <th>Descrição:</th>
         </tr>
@@ -27,6 +28,8 @@ try{
     <tbody>
         <?php for($i=0; $i<$total_categorias; $i++): ?>
         <tr>
+            <td>
+                <a href="cadastrar_categoria.php?id=<?= $lista_categorias[$i]->id ?>">Abrir</a></td>
             <td><?= $lista_categorias[$i]->id ?></td>
             <td><?= $lista_categorias[$i]->descricao ?></td>
         </tr>

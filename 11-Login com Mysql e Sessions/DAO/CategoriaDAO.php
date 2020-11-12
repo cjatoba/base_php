@@ -14,9 +14,18 @@ class CategoriaDAO
         $this->conexao = new MySQL();
     }
 
+    /**
+     * Retorna um registro específico da tabela categoria
+     */
     public function getById($id)
     {
+        $stmt = $this->conexao->prepare("SELECT * FROM categoria WHERE id = ?");
 
+        $stmt->bindParam(1,$id);
+
+        $stmt->execute();
+
+        return $stmt->fetchObject();
     }
 
     /**
@@ -48,14 +57,29 @@ class CategoriaDAO
         $stmt->execute();
     }
 
+    /**
+     * Atualiza um registro na tabela categoria
+     */
     public function update($dados_dategoria)
     {
+        $sql = "UPDATE categoria SET descricao = ? WHERE id = ?";
 
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindParam(1, $dados_dategoria["descricao"]);
+        $stmt->bindParam(2, $dados_dategoria["id"]);
+        $stmt->execute();
     }
 
+    /**
+     * Deleta um registro da tabela categoria
+     */
     public function delete($id)
     {
+        $sql = "DELETE FROM categoria WHERE id = ?";
 
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
     }
 
 }
