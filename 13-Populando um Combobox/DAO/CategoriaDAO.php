@@ -9,7 +9,7 @@ class CategoriaDAO
      */
     public function __construct()
     {
-        include 'MySQL.php';
+        include_once 'MySQL.php';
 
         $this->conexao = new MySQL();
     }
@@ -48,25 +48,25 @@ class CategoriaDAO
     /**
      * Método para inserir um novo registro natabela categoria
      */
-    public function insert($dados_dategoria)
+    public function insert($dados_da_categoria)
     {
         $sql = "INSERT INTO categoria (descricao) VALUES (?)";
 
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindParam(1, $dados_dategoria["descricao"]);
+        $stmt->bindParam(1, $dados_da_categoria["descricao"]);
         $stmt->execute();
     }
 
     /**
      * Atualiza um registro na tabela categoria
      */
-    public function update($dados_dategoria)
+    public function update($dados_da_categoria)
     {
         $sql = "UPDATE categoria SET descricao = ? WHERE id = ?";
 
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindParam(1, $dados_dategoria["descricao"]);
-        $stmt->bindParam(2, $dados_dategoria["id"]);
+        $stmt->bindParam(1, $dados_da_categoria["descricao"]);
+        $stmt->bindParam(2, $dados_da_categoria["id"]);
         $stmt->execute();
     }
 

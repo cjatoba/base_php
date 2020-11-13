@@ -9,7 +9,7 @@ try {
 
     if (isset($_GET["salvar"])) {
 
-        include 'DAO/CategoriaDAO.php';
+        include '../../DAO/CategoriaDAO.php';
 
         $categoria_dao = new CategoriaDAO();
 
@@ -32,7 +32,7 @@ try {
     }
 
     if (isset($_GET["excluir"])) {
-        include 'DAO/CategoriaDAO.php';
+        include '../../DAO/CategoriaDAO.php';
 
         $categoria_dao = new CategoriaDAO();
 
@@ -42,7 +42,7 @@ try {
     }
 
     if (isset($_GET["id"])) {
-        include 'DAO/CategoriaDAO.php';
+        include '../../DAO/CategoriaDAO.php';
 
         $categoria_dao = new CategoriaDAO();
 
