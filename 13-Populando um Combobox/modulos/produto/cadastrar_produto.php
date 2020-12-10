@@ -62,6 +62,10 @@ try {
         header("Location: listar_produtos.php");
     }
 
+    /**
+     * Obter produto
+     */
+
     if (isset($_GET["id"])) {
 
         include '../../DAO/ProdutoDAO.php';
@@ -116,9 +120,7 @@ try {
                                         $selecionado = $lista_categorias[$i]->id == $dados_produto->id_categoria ? "selected" : "";
                                 ?>
                                 
-                                <option
-                                    <?= $selecionado ?>
-                                    value="<?= $lista_categorias[$i]->id ?>">
+                                <option value="<?= $lista_categorias[$i]->id ?>" <?= $selecionado ?> >
                                     <?= $lista_categorias[$i]->descricao ?>
                                 </option>
                             
@@ -138,11 +140,9 @@ try {
                                 $selecionado = "";
 
                                 if(isset($dados_produto->id))
-                                    $selecionado = $lista_categorias[$i]->id == $dados_produto->id_marca ? "selected" : "";
+                                    $selecionado = $lista_marcas[$i]->id == $dados_produto->id_marca ? "selected" : "";
                             ?>
-                            <option 
-                                <?= $selecionado ?>
-                                value="<?= $lista_marcas[$i]->id ?>">
+                            <option value="<?= $lista_marcas[$i]->id ?>" <?= $selecionado ?>>
                                 <?= $lista_marcas[$i]->descricao ?>
                             </option>
                         <?php endfor ?>
