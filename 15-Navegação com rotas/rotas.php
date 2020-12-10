@@ -37,7 +37,7 @@ try{
         break;
 
         case '/marca/salvar':
-            include 'Views/modulos/cadastrar_marca.php';
+            include 'Views/modulos/marca/cadastrar_marca.php';
         break;
 
         case '/marca/remover':
