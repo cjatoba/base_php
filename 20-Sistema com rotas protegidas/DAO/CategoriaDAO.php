@@ -1,17 +1,14 @@
 <?php 
 
-class CategoriaDAO
+class CategoriaDAO extends DAO
 {
-    private $conexao;
 
     /**
      * Criar um novo objeto para o CRUD de categorias
      */
     public function __construct()
     {
-        include_once 'MySQL.php';
-
-        $this->conexao = new MySQL();
+        parent::__construct();
     }
 
     /**

@@ -6,7 +6,7 @@ try{
     {
         //Tela inicial
         case '/':
-            include 'Views/home.php';
+            DashboardController::index();
         break;
 
         case '/login':

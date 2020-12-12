@@ -17,7 +17,10 @@ class LoginController extends Controller
         $resultado = $login_dao->getUserByUserAndPass($usuario, $senha);
 
         if($resultado !== false){
-            $_SESSION["usuario_logado"] = $resultado->id;
+            $_SESSION["usuario_logado"] = array(
+                'id' => $resultado->id,
+                'nome' => $resultado->nome
+            );
             header("Location: /");
         }else{
             header("Location: /login?fail=true");
@@ -30,5 +33,10 @@ class LoginController extends Controller
         unset($_SESSION["usuario_logado"]);
 
         parent::isProtected();
+    }
+
+    public static function getNameOfUser()
+    {
+        return $_SESSION['usuario_logado']['nome'];
     }
 }

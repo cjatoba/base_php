@@ -1,9 +1,11 @@
 <?php
 
-class CategoriaController {
+class CategoriaController extends Controller {
 
     public static function index()
     {
+        parent::isProtected();
+
         $categoria_dao = new CategoriaDAO();
         $lista_categorias = $categoria_dao->getAllRows();
         $total_categorias = count($lista_categorias);
@@ -13,6 +15,8 @@ class CategoriaController {
 
     public static function ver()
     {
+        parent::isProtected();
+
         if (isset($_GET["id"])) {
             $categoria_dao = new CategoriaDAO();    
             $dados_categoria = $categoria_dao->getById($_GET["id"]);
@@ -25,11 +29,14 @@ class CategoriaController {
 
     public static function cadastrar()
     {
+        parent::isProtected();
+
         include 'Views/modulos/categoria/cadastrar_categoria.php';
     }
 
     public static function salvar()
     {
+        parent::isProtected();
 
         $categoria_dao = new CategoriaDAO();
 
@@ -54,6 +61,8 @@ class CategoriaController {
 
     public static function excluir()
     {
+        parent::isProtected();
+        
         if (isset($_GET["id"])) 
         {
             $categoria_dao = new CategoriaDAO();    

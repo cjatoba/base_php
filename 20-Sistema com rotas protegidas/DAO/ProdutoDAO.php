@@ -1,17 +1,14 @@
 <?php 
 
-class ProdutoDAO
+class ProdutoDAO extends DAO
 {
-    private $conexao;
 
     /**
      * Criar um novo objeto para o CRUD de produto
      */
     public function __construct()
     {
-        include_once 'MySQL.php';
-
-        $this->conexao = new MySQL();
+        parent::__construct();
     }
 
     /**

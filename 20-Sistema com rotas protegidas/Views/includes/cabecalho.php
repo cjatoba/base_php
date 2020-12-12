@@ -1,34 +1,3 @@
-<?php 
-
-try {
-
-    //
-    // $caminho_base = dirname(__FILE__);
-
-    // $caminho = dirname(__FILE__) . '../DAO/MySQL.php';
-
-    // echo $caminho;
-
-// include_once PATH_DAO . 'MySQL.php';
-
-$mysql = new MySQL();
-
-$stmt = $mysql->prepare("SELECT * FROM usuarios WHERE id=:id");
-
-$stmt->execute(
-    array(
-        "id" => $_SESSION["usuario_logado"]
-    )
-);
-
-$dados_de_usuario = $stmt->fetchObject();
-
-} catch (Exception $e) {
-echo $e->getMessage();
-}
-
-?>
-
 <header class="container mt-3">
     <div class="row mb-3">
         <div class="col-md-9">
@@ -40,7 +9,7 @@ echo $e->getMessage();
         <div class="col-sm">
             <fieldset>
                 <legend>Dados do usuário</legend>
-                Bem vindo <strong> <?= $dados_de_usuario->nome ?> </strong>
+                Bem vindo <strong> <?= LoginController::getNameOfUser() ?> </strong>
                 <a class="btn btn-dark" href="/sair">Sair</a>
             </fieldset>
         </div>
