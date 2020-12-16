@@ -13,6 +13,16 @@ class LoginDAO extends DAO
         parent::__construct();
     }
 
+    public function setNewPasswordForUserByEmail($email, $newPassword)
+    {
+        $sql = "UPDATE usuarios SET senha = sha1(?) WHERE email = ?";
+    
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(1, $newPassword);
+        $stmt->bindValue(2, $email);
+        $stmt->execute();
+    }
+
     /**
      * Retorna um registro específico da tabela produto
      */

@@ -40,6 +40,7 @@
 
                         <div class='form-group'>
                             <button class='btn btn-success' type="submit">Entrar</button>
+                            <a class="btn" href="/esqueci_a_senha">Esqueci a senha</a>
                         </div>
                     </form>
                 </div>

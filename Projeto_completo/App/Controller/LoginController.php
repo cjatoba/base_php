@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\DAO\LoginDAO;
+use \Exception;
 
 class LoginController extends Controller
 {
@@ -49,6 +50,38 @@ class LoginController extends Controller
         $validade = time() - 3600;
 
         setcookie('sdc_user', '', $validade, '/', '', false, true);
+    }
+
+    public static function esqueciSenha(){
+        include PATH_VIEW . 'esqueci_senha.php';
+    }
+
+    public static function enviarNovaSenha()
+    {
+
+        try{
+            $nova_senha = uniqid();
+            $email = $_POST['email'];
+
+            $login_dao = new LoginDAO();
+            $login_dao->setNewPasswordForUserByEmail($email, $nova_senha);
+
+            $assunto = "Nova senha do sistema";
+            $mensagem = "Sua nova senha é: " . $nova_senha;
+
+            $retorno = "Você receberá uma nova senha em seu e-mail cadastrado";
+
+            if(!mail($email, $assunto, $mensagem))
+            {
+                $teste = "mensagem teste" . $nova_senha;
+                throw new Exception("Ops, falha ao enviar o e-mail. " . $teste);
+            }
+        }catch(Exception $e){
+            $retorno = $e->getMessage();
+        }
+
+        include PATH_VIEW . 'esqueci_senha.php';
+
     }
 
     public static function sair()
