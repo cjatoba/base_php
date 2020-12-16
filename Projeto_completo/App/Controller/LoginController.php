@@ -8,6 +8,7 @@ class LoginController extends Controller
 {
     public static function login()
     {
+        $usuario = (isset($_COOKIE['sdc_user'])) ? $_COOKIE['sdc_user'] : '';
         include PATH_VIEW . '/login.php';
     }
 
@@ -25,15 +26,35 @@ class LoginController extends Controller
                 'id' => $resultado->id,
                 'nome' => $resultado->nome
             );
+
+            if(isset($_POST['remember']))
+                self::remember($usuario);
+
             header("Location: /");
         }else{
             header("Location: /login?fail=true");
         }
 
+    }    
+
+    private static function remember($user)
+    {
+        $validade = strtotime('+1 month');
+
+        setcookie('sdc_user', $user, $validade, '/', '', false, true);
+    }
+
+    private static function forget()
+    {
+        $validade = time() - 3600;
+
+        setcookie('sdc_user', '', $validade, '/', '', false, true);
     }
 
     public static function sair()
     {
+        self::forget();
+
         unset($_SESSION["usuario_logado"]);
 
         parent::isProtected();

@@ -25,12 +25,17 @@
 
                         <div class='form-group'>
                             <label for="user">Usuário</label>
-                            <input class='form-control' type="text" name="user" id="user" autofocus>
+                            <input class='form-control' type="text" name="user" id="user" value="<?= $usuario ?>" autofocus>
                         </div>
 
                         <div class='form-group'>
                             <label for="pass">Senha</label>
                             <input class='form-control' type="password" name="pass" id="pass">
+                        </div>
+
+                        <div class='form-group'>
+                            <input type="checkbox" name="remember" id="remember">
+                            <label for="remember">Lembrar usuário</label>
                         </div>
 
                         <div class='form-group'>
