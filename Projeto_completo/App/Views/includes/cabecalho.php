@@ -9,7 +9,12 @@
         <div class="col-sm">
             <fieldset>
                 <legend>Dados do usuário</legend>
-                Bem vindo <strong> <?= App\Controller\LoginController::getNameOfUser() ?> </strong>
+                Bem vindo 
+                <strong> 
+                    <a href="/usuario/meus_dados" class='btn'>
+                    <?= App\Controller\LoginController::getNameOfUser() ?> 
+                    </a>
+                </strong>
                 <a class="btn btn-dark" href="/sair">Sair</a>
             </fieldset>
         </div>

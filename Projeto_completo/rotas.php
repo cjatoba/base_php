@@ -4,7 +4,8 @@ use App\Controller\{
     CategoriaController, 
     DashboardController, 
     LoginController, 
-    ProdutoController
+    ProdutoController,
+    UsuarioController
 };
 
 try{
@@ -78,10 +79,21 @@ try{
        case '/categoria/excluir':
             CategoriaController::excluir();
        break;
+        
+        //Rotas para gerenciamento de usuários
+
+        case '/usuario/meus_dados':
+            UsuarioController::meusDados();
+        break;
+
+        case '/usuario/salvar':
+            UsuarioController::salvar();
+        break;
 
         default:
             echo "Rota inválida";
         break;
+
     }
 }catch(Exception $e){
     echo "Erro " . $e->getMessage();
